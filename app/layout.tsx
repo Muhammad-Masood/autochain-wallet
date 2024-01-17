@@ -2,6 +2,7 @@ import Moralis from "moralis";
 import Header from "./components/Header";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
+import { WalletContextProvider } from "@/lib/providers/WalletContext";
 // import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export default function RootLayout({
@@ -15,11 +16,13 @@ export default function RootLayout({
         <title>Auto Chain</title>
       </head>
       <body className="flex flex-col items-center justify-start w-[350px] h-[580px] px-4 text-center">
+        <WalletContextProvider>
         <Toaster position="top-left"/>
         <Header/>
         <div className="pt-4">
         {children}
         </div>
+        </WalletContextProvider>
         </body>
     </html>
   );

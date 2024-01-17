@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import {
   Card,
@@ -12,10 +12,8 @@ import { Button } from "@/components/ui/button";
 import { ethers } from "ethers";
 import { ClipboardCopy } from "lucide-react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 
-const page = () => {
-  const router = useRouter();
+const Create = () => {
   const [newSeedPhrase, setNewSeedPhrase] = useState<string>("");
 
   const createWallet = () => {
@@ -33,26 +31,16 @@ const page = () => {
         </p>
         <Card className="h-[200px]">
           <CardHeader>
-            <CardDescription
-              className="cursor-pointer"
-              onClick={() => {
-                navigator.clipboard.writeText(newSeedPhrase);
-                toast.success("Copied to clipboard.");
-              }
-            }>
-              {newSeedPhrase}
-            </CardDescription>
+            <CardDescription className="cursor-pointer" onClick={() => navigator.clipboard.writeText(newSeedPhrase)}>{newSeedPhrase}</CardDescription>
           </CardHeader>
         </Card>
         <div className="flex justify-between">
-          <Button variant={"outline"} onClick={() => router.replace("/")}>
-            Back
-          </Button>
-          <Button onClick={createWallet}>Generate Seed Phrase</Button>
+        <Button>Back</Button>
+        <Button onClick={createWallet}>Generate Seed Phrase</Button>
         </div>
       </div>
     </>
   );
 };
 
-export default page;
+export default Create;
